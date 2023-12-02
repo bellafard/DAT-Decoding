@@ -11,7 +11,7 @@ A = zeros(50,130,100);
 B = ones(50,120,100);
 
 binsize = 9;
-nsamples = 8;
+nsamples = 32;
 nframes = size(A,3)-binsize;
 
 accu = nan(nsamples,nframes);
@@ -21,10 +21,9 @@ for sample = 1:nsamples
         x = A(:,:,frame:frame+binsize);
         y = B(:,:,frame:frame+binsize);
         
-		accu(sample,frame) = lstm_decoder(x,y,0); toc
+		accu(sample,frame) = svm_decoder(x,y,0); toc
 	end
 end
 
 plot(mean(accu,1))
-ylim([0,1])
 
