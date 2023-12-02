@@ -18,9 +18,9 @@ accu = nan(nsamples,nframes);
 
 for sample = 1:nsamples
 	for frame = 1:nframes; tic
-        x = A(:,:,frame:frame+binsize);
-        y = B(:,:,frame:frame+binsize);
-        
+		x = A(:,:,frame:frame+binsize);
+		y = B(:,:,frame:frame+binsize);
+		
 		accu(sample,frame) = svm_decoder(x,y,0); toc
 	end
 end
